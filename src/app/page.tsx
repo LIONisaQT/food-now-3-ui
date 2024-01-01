@@ -9,7 +9,7 @@ export default function Home() {
   });
 
   const getFood = async () => {
-    fetch("http://localhost:3001/api", {
+    fetch("https://food-now-3-server.onrender.com/api", {
       method: "POST",
       headers: {
         Accept: "application/json",
