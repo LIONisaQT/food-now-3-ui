@@ -18,6 +18,7 @@
 	color: white;
 	text-shadow: 0 0 8px black;
 	margin: 0;
+	z-index: 100;
 }
 
 .image {

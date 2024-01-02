@@ -57,6 +57,14 @@ const cusinines: FoodTypeData[] = [
 ];
 
 export default function TypePicker() {
+  const selectedStyle = {
+    filter: "brightness(100%) grayscale(0)",
+  };
+
+  const unselectedStyle = {
+    filter: "brightness(70%) grayscale(50%)",
+  };
+
   const [selections, setSelections] = useState<string[]>([]);
 
   useEffect(() => {
@@ -88,6 +96,11 @@ export default function TypePicker() {
               src={cusinine.image}
               alt={cusinine.type}
               className={styles.image}
+              style={
+                selections.includes(cusinine.type)
+                  ? selectedStyle
+                  : unselectedStyle
+              }
               width={0}
               height={0}
               unoptimized
