@@ -42,12 +42,14 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>Food Now!</h1>
-      <TypePicker />
-      {/* <LocationPicker />
-      <RangePicker />
-      <PricePicker />
-      <RatingPicker />
-      <AttributePicker /> */}
+      <div className={styles.categories}>
+        <TypePicker />
+        <LocationPicker />
+        {/* <RangePicker /> */}
+        {/* <PricePicker /> */}
+        {/* <RatingPicker /> */}
+        {/* <AttributePicker /> */}
+      </div>
     </main>
   );
 }

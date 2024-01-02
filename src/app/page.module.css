@@ -5,3 +5,9 @@
   padding: 8px;
   min-height: 100vh;
 }
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
