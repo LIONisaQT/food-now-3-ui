@@ -2,6 +2,12 @@
 
 import { useEffect } from "react";
 import styles from "./page.module.css";
+import TypePicker from "./typePicker/TypePicker";
+import LocationPicker from "./locationPicker/LocationPicker";
+import RangePicker from "./rangePicker/RangePicker";
+import PricePicker from "./pricePicker/PricePicker";
+import RatingPicker from "./ratingPicker/RatingPicker";
+import AttributePicker from "./attributePicker/AttributePicker";
 
 const localServer = true;
 
@@ -36,6 +42,12 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>Food Now!</h1>
+      <TypePicker />
+      {/* <LocationPicker />
+      <RangePicker />
+      <PricePicker />
+      <RatingPicker />
+      <AttributePicker /> */}
     </main>
   );
 }
