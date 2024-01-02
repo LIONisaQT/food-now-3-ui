@@ -3,13 +3,19 @@
 import { useEffect } from "react";
 import styles from "./page.module.css";
 
+const localServer = true;
+
 export default function Home() {
   useEffect(() => {
     getFood();
   });
 
   const getFood = async () => {
-    fetch("https://food-now-3-server.onrender.com/api", {
+    const apiUrl = localServer
+      ? "http://localhost:3001/api"
+      : "https://food-now-3-server.onrender.com/api";
+
+    fetch(apiUrl, {
       method: "POST",
       headers: {
         Accept: "application/json",
