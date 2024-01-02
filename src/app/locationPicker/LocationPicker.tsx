@@ -7,7 +7,6 @@ export default function LocationPicker() {
 
   useEffect(() => {
     if (locationInput && locationInput.current) {
-      //@ts-ignore
       locationInput.current.value = location;
     }
   }, [location]);
