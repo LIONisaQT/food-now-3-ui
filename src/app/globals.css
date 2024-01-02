@@ -1,3 +1,10 @@
 :root {
-  --main-bg-color: white;
+  --red: #fd4848;
+  --orange: #f99b67;
+  --main-bg-color: linear-gradient(var(--red), var(--orange));
+}
+
+body {
+  background: var(--main-bg-color);
+  color: white;
 }

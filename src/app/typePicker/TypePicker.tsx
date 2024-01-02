@@ -109,7 +109,7 @@ export default function TypePicker() {
         ))}
       </div>
       <div>
-        <h4 className={styles.inputTitle}>Don&apos;t see one you like?</h4>
+        <h3 className={styles.inputTitle}>Don&apos;t see one you like?</h3>
         <input
           className={styles.input}
           placeholder="Add your own! (comma separated)"
