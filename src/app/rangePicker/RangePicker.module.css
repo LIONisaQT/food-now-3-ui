@@ -1,0 +1,18 @@
+.container {
+	width: 100%;
+}
+
+.sliderContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+
+.slider {
+	color: var(--red);
+}
+
+.rangeText {
+	min-width: 48px;
+}

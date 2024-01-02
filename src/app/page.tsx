@@ -45,7 +45,7 @@ export default function Home() {
       <div className={styles.categories}>
         <TypePicker />
         <LocationPicker />
-        {/* <RangePicker /> */}
+        <RangePicker />
         {/* <PricePicker /> */}
         {/* <RatingPicker /> */}
         {/* <AttributePicker /> */}
