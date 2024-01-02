@@ -13,7 +13,7 @@ const localServer = true;
 
 export default function Home() {
   useEffect(() => {
-    getFood();
+    // getFood();
   });
 
   const getFood = async () => {
