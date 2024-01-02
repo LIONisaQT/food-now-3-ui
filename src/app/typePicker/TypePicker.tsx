@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styles from "./TypePicker.module.css";
 import Image from "next/image";
 
@@ -56,12 +57,32 @@ const cusinines: FoodTypeData[] = [
 ];
 
 export default function TypePicker() {
+  const [selections, setSelections] = useState<string[]>([]);
+
+  useEffect(() => {
+    console.table(selections);
+  }, [selections]);
+
+  const typePicked = (type: string) => {
+    if (selections.includes(type)) {
+      setSelections((selections) =>
+        selections.filter((selection) => selection !== type)
+      );
+    } else {
+      setSelections([...selections, type]);
+    }
+  };
+
   return (
     <section className={styles.container}>
       <h1>1. Pick categories</h1>
       <div className={styles.categories}>
         {cusinines.map((cusinine) => (
-          <div key={cusinine.type} className={styles.card}>
+          <div
+            key={cusinine.type}
+            className={styles.card}
+            onClick={() => typePicked(cusinine.type)}
+          >
             <h3 className={styles.label}>{cusinine.label}</h3>
             <Image
               src={cusinine.image}
