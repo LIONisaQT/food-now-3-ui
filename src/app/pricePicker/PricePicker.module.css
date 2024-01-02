@@ -1,0 +1,15 @@
+.container {
+	width: 100%;
+}
+
+.priceContainer {
+	padding: 0 20px;
+}
+
+.slider {
+	color: var(--red);
+}
+
+.MuiSlider-markLabel {
+	color: white !important;
+}

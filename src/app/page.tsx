@@ -46,7 +46,7 @@ export default function Home() {
         <TypePicker />
         <LocationPicker />
         <RangePicker />
-        {/* <PricePicker /> */}
+        <PricePicker />
         {/* <RatingPicker /> */}
         {/* <AttributePicker /> */}
       </div>
