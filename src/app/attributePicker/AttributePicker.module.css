@@ -1,0 +1,13 @@
+.container {
+	width: 100%;
+}
+
+.attributeContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.checkbox {
+	color: var(--red);
+}
