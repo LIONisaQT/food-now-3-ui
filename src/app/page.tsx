@@ -15,7 +15,7 @@ export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
   const [location, setLocation] = useState<string>("san francisco");
   const [distance, setDistance] = useState<number>(10);
-  const [price, setPrice] = useState<number[]>([1, 2, 3, 4]);
+  const [price, setPrice] = useState<number[]>([1, 4]);
   const [rating, setRating] = useState<number>(4);
   const [attributes, setAttributes] = useState<string[]>([]);
 
@@ -54,13 +54,20 @@ export default function Home() {
   }, []);
 
   const buildRequestBody = () => {
-    console.log("=== BEGIN BUILDING REQUEST ===");
+    const generatePriceRange = (priceRange: number[]) => {
+      let range: number[] = [];
+      for (let i = priceRange[0]; i <= priceRange[1]; i++) {
+        range.push(i);
+      }
+      return range;
+    };
+
     let requestBody: YelpRequestBody = {
       term: categories.join(","),
-      radius: distance,
-      price: price,
+      radius: Math.floor(distance * 1609.34), // Miles to meters
+      price: generatePriceRange(price),
       open_now: true,
-      attributes: attributes,
+      attributes: attributes.join(","),
     };
 
     const determineLocation = () => {
@@ -78,9 +85,6 @@ export default function Home() {
       }
     };
     determineLocation();
-
-    console.table(requestBody);
-    console.log("=== END BUILDING REQUEST ===");
 
     return requestBody;
   };
@@ -116,7 +120,7 @@ export default function Home() {
         <RatingPicker callback={ratingCallback} />
         <AttributePicker callback={attributeCallback} />
       </div>
-      <button onClick={buildRequestBody}>Get food now!</button>
+      <button onClick={getFood}>Get food now!</button>
     </main>
   );
 }
