@@ -2,12 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "./TypePicker.module.css";
 import Image from "next/image";
 
-type FoodTypeData = {
-  type: string;
-  label: string;
-  image: string;
-};
-
 const cusinines: FoodTypeData[] = [
   {
     type: "breakfast",
@@ -56,7 +50,7 @@ const cusinines: FoodTypeData[] = [
   },
 ];
 
-export default function TypePicker() {
+export default function TypePicker({ callback }: CategoryProps) {
   const selectedStyle = {
     filter: "brightness(100%) grayscale(0)",
   };
@@ -68,8 +62,8 @@ export default function TypePicker() {
   const [selections, setSelections] = useState<string[]>([]);
 
   useEffect(() => {
-    console.table(selections);
-  }, [selections]);
+    callback(selections);
+  }, [selections, callback]);
 
   const typePicked = (type: string) => {
     if (selections.includes(type)) {

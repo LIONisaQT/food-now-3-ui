@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./page.module.css";
 import TypePicker from "./typePicker/TypePicker";
 import LocationPicker from "./locationPicker/LocationPicker";
@@ -12,9 +12,19 @@ import AttributePicker from "./attributePicker/AttributePicker";
 const localServer = true;
 
 export default function Home() {
+  const [categories, setCategories] = useState<string[]>([]);
+
   useEffect(() => {
     // getFood();
   });
+
+  useEffect(() => {
+    console.log(categories);
+  }, [categories]);
+
+  const typePickedCallback = useCallback((selections: string[]) => {
+    setCategories(selections);
+  }, []);
 
   const getFood = async () => {
     const apiUrl = localServer
@@ -43,7 +53,7 @@ export default function Home() {
     <main className={styles.main}>
       <h1>Food Now!</h1>
       <div className={styles.categories}>
-        <TypePicker />
+        <TypePicker categories={categories} callback={typePickedCallback} />
         <LocationPicker />
         <RangePicker />
         <PricePicker />
