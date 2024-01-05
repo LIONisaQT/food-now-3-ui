@@ -6,6 +6,10 @@ type LocationProps = {
 	callback: (location: string) => void;
 }
 
+type DistanceProps = {
+	callback: (distance: number) => void;
+}
+
 type FoodTypeData = {
   type: string;
   label: string;

@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./RangePicker.module.css";
 import { Slider } from "@mui/material";
 
-export default function RangePicker() {
+export default function RangePicker({ callback }: DistanceProps) {
   const [distance, setDistance] = useState(10);
+
+  useEffect(() => {
+    callback(distance);
+  }, [distance, callback]);
 
   const sliderMove = (event: Event, value: any) => {
     setDistance(value);
