@@ -18,6 +18,10 @@ type RatingProps = {
 	callback: (rating: number) => void;
 }
 
+type AttributeProps = {
+	callback: (attributes: string[]) => void;
+}
+
 type FoodTypeData = {
   type: string;
   label: string;

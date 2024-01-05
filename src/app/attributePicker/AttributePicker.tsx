@@ -1,5 +1,6 @@
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import styles from "./AttributePicker.module.css";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type Attribute = {
   value: string;
@@ -8,11 +9,6 @@ type Attribute = {
 };
 
 const attributesList: Attribute[] = [
-  {
-    value: "open_now",
-    label: "Open now",
-    defaultChecked: true,
-  },
   {
     value: "hot_and_new",
     label: "Hot and new",
@@ -39,7 +35,25 @@ const attributesList: Attribute[] = [
   },
 ];
 
-export default function AttributePicker() {
+export default function AttributePicker({ callback }: AttributeProps) {
+  const [attributes, setAttributes] = useState<string[]>([]);
+
+  useEffect(() => {
+    callback(attributes);
+  }, [attributes, callback]);
+
+  const toggleAttribute = ({
+    target: { value, checked },
+  }: ChangeEvent<HTMLInputElement>) => {
+    if (checked) {
+      if (!attributes.includes(value)) {
+        setAttributes([...attributes, value]);
+      }
+    } else {
+      setAttributes(attributes.filter((attr) => attr !== value));
+    }
+  };
+
   return (
     <section>
       <h1>6. Set additional attributes.</h1>
@@ -51,7 +65,9 @@ export default function AttributePicker() {
               control={
                 <Checkbox
                   defaultChecked={attribute.defaultChecked}
+                  value={attribute.value}
                   className={styles.checkbox}
+                  onChange={toggleAttribute}
                   sx={{
                     "& .AttributePicker_checkbox": {
                       color: "white", // this doesn't work rip
