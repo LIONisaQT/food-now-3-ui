@@ -1,15 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import styles from "./LocationPicker.module.css";
 
-export default function LocationPicker() {
+export default function LocationPicker({ callback }: LocationProps) {
   const [location, setLocation] = useState("");
   const locationInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (locationInput && locationInput.current) {
       locationInput.current.value = location;
+      callback(locationInput.current.value);
     }
-  }, [location]);
+  }, [location, callback]);
+
+  const locationTyped = (event: FormEvent<HTMLInputElement>) => {
+    setLocation(event.currentTarget.value);
+  };
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -38,6 +43,7 @@ export default function LocationPicker() {
           ref={locationInput}
           className={styles.locationText}
           placeholder="Enter location"
+          onInput={locationTyped}
         ></input>
         <button className={styles.locationButton} onClick={() => getLocation()}>
           <svg

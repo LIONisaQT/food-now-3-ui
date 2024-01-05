@@ -13,13 +13,21 @@ const localServer = true;
 
 export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
+  const [location, setLocation] = useState("");
 
   useEffect(() => {
+    console.log("=== BEGIN BUILDING REQUEST ===");
     console.log(categories);
-  }, [categories]);
+    console.log(location);
+    console.log("=== END BUILDING REQUEST ===");
+  }, [categories, location]);
 
   const typePickedCallback = useCallback((selections: string[]) => {
     setCategories(selections);
+  }, []);
+
+  const locationCallback = useCallback((location: string) => {
+    setLocation(location);
   }, []);
 
   const getFood = async () => {
@@ -50,7 +58,7 @@ export default function Home() {
       <h1>Food Now!</h1>
       <div className={styles.categories}>
         <TypePicker callback={typePickedCallback} />
-        <LocationPicker />
+        <LocationPicker callback={locationCallback} />
         <RangePicker />
         <PricePicker />
         <RatingPicker />
