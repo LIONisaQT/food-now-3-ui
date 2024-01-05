@@ -15,10 +15,6 @@ export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    // getFood();
-  });
-
-  useEffect(() => {
     console.log(categories);
   }, [categories]);
 
@@ -53,7 +49,7 @@ export default function Home() {
     <main className={styles.main}>
       <h1>Food Now!</h1>
       <div className={styles.categories}>
-        <TypePicker categories={categories} callback={typePickedCallback} />
+        <TypePicker callback={typePickedCallback} />
         <LocationPicker />
         <RangePicker />
         <PricePicker />

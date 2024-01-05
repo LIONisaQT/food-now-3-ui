@@ -56,7 +56,7 @@ export default function TypePicker({ callback }: CategoryProps) {
   };
 
   const unselectedStyle = {
-    filter: "brightness(70%) grayscale(50%)",
+    filter: "brightness(50%) grayscale(50%)",
   };
 
   const [selections, setSelections] = useState<string[]>([]);
