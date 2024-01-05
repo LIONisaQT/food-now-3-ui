@@ -1,6 +1,6 @@
 import { Slider } from "@mui/material";
 import styles from "./PricePicker.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const marks = [
   {
@@ -21,8 +21,12 @@ const marks = [
   },
 ];
 
-export default function PricePicker() {
+export default function PricePicker({ callback }: PriceProps) {
   const [priceRange, setPriceRange] = useState([1, 4]);
+
+  useEffect(() => {
+    callback(priceRange);
+  }, [priceRange, callback]);
 
   const sliderMove = (event: Event, value: any) => {
     setPriceRange(value);

@@ -10,6 +10,10 @@ type DistanceProps = {
 	callback: (distance: number) => void;
 }
 
+type PriceProps = {
+	callback: (price: number[]) => void;
+}
+
 type FoodTypeData = {
   type: string;
   label: string;
