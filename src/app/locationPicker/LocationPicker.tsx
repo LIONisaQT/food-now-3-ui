@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import styles from "./LocationPicker.module.css";
 
 export default function LocationPicker({ callback }: LocationProps) {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("San Francisco");
   const locationInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

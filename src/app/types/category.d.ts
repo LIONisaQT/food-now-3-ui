@@ -27,3 +27,14 @@ type FoodTypeData = {
   label: string;
   image: string;
 };
+
+type YelpRequestBody = {
+	term?: string;
+	location?: string;
+	latitude?: number;
+	longitude?: number;
+	radius: number;
+	price: number[];
+	open_now: boolean;
+	attributes: string[];
+}

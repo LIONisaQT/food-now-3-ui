@@ -13,22 +13,20 @@ const localServer = true;
 
 export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
-  const [location, setLocation] = useState<string>("");
-  const [distance, setDistance] = useState<number>();
-  const [price, setPrice] = useState<number[]>();
-  const [rating, setRating] = useState<number>();
-  const [attributes, setAttributes] = useState<string[]>();
+  const [location, setLocation] = useState<string>("san francisco");
+  const [distance, setDistance] = useState<number>(10);
+  const [price, setPrice] = useState<number[]>([1, 2, 3, 4]);
+  const [rating, setRating] = useState<number>(4);
+  const [attributes, setAttributes] = useState<string[]>([]);
 
-  useEffect(() => {
-    console.log("=== BEGIN BUILDING REQUEST ===");
-    console.log(categories);
-    console.log(location);
-    console.log(distance);
-    console.log(price);
-    console.log(rating);
-    console.log(attributes);
-    console.log("=== END BUILDING REQUEST ===");
-  }, [categories, location, distance, price, rating, attributes]);
+  useEffect(() => {}, [
+    categories,
+    location,
+    distance,
+    price,
+    rating,
+    attributes,
+  ]);
 
   const typePickedCallback = useCallback((selections: string[]) => {
     setCategories(selections);
@@ -46,6 +44,7 @@ export default function Home() {
     setPrice(price);
   }, []);
 
+  // TODO: This has to get processed after receiving data from backend
   const ratingCallback = useCallback((rating: number) => {
     setRating(rating);
   }, []);
@@ -53,6 +52,38 @@ export default function Home() {
   const attributeCallback = useCallback((attributes: string[]) => {
     setAttributes(attributes);
   }, []);
+
+  const buildRequestBody = () => {
+    console.log("=== BEGIN BUILDING REQUEST ===");
+    let requestBody: YelpRequestBody = {
+      term: categories.join(","),
+      radius: distance,
+      price: price,
+      open_now: true,
+      attributes: attributes,
+    };
+
+    const determineLocation = () => {
+      if (location?.includes(", ")) {
+        const geoCoords = location.split(", ");
+        const latitude = Number(geoCoords[0]);
+        const longitude = Number(geoCoords[1]);
+        requestBody = {
+          ...requestBody,
+          latitude: latitude,
+          longitude: longitude,
+        };
+      } else {
+        requestBody = { ...requestBody, location: location };
+      }
+    };
+    determineLocation();
+
+    console.table(requestBody);
+    console.log("=== END BUILDING REQUEST ===");
+
+    return requestBody;
+  };
 
   const getFood = async () => {
     const apiUrl = localServer
@@ -65,10 +96,7 @@ export default function Home() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        term: "boba",
-        location: "san francisco, ca",
-      }),
+      body: JSON.stringify(buildRequestBody()),
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
@@ -88,6 +116,7 @@ export default function Home() {
         <RatingPicker callback={ratingCallback} />
         <AttributePicker callback={attributeCallback} />
       </div>
+      <button onClick={buildRequestBody}>Get food now!</button>
     </main>
   );
 }
