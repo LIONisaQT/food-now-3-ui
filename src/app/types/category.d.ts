@@ -14,6 +14,10 @@ type PriceProps = {
 	callback: (price: number[]) => void;
 }
 
+type RatingProps = {
+	callback: (rating: number) => void;
+}
+
 type FoodTypeData = {
   type: string;
   label: string;

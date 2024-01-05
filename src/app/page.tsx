@@ -16,6 +16,7 @@ export default function Home() {
   const [location, setLocation] = useState<string>("");
   const [distance, setDistance] = useState<number>();
   const [price, setPrice] = useState<number[]>();
+  const [rating, setRating] = useState<number>();
 
   useEffect(() => {
     console.log("=== BEGIN BUILDING REQUEST ===");
@@ -23,8 +24,9 @@ export default function Home() {
     console.log(location);
     console.log(distance);
     console.log(price);
+    console.log(rating);
     console.log("=== END BUILDING REQUEST ===");
-  }, [categories, location, distance, price]);
+  }, [categories, location, distance, price, rating]);
 
   const typePickedCallback = useCallback((selections: string[]) => {
     setCategories(selections);
@@ -40,6 +42,10 @@ export default function Home() {
 
   const priceCallback = useCallback((price: number[]) => {
     setPrice(price);
+  }, []);
+
+  const ratingCallback = useCallback((rating: number) => {
+    setRating(rating);
   }, []);
 
   const getFood = async () => {
@@ -73,7 +79,7 @@ export default function Home() {
         <LocationPicker callback={locationCallback} />
         <RangePicker callback={distanceCallback} />
         <PricePicker callback={priceCallback} />
-        <RatingPicker />
+        <RatingPicker callback={ratingCallback} />
         <AttributePicker />
       </div>
     </main>
