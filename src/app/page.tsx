@@ -9,6 +9,8 @@ import PricePicker from "./pricePicker/PricePicker";
 import RatingPicker from "./ratingPicker/RatingPicker";
 import AttributePicker from "./attributePicker/AttributePicker";
 
+import { sampleResult } from "./sampleResult";
+
 const localServer = true;
 
 export default function Home() {
@@ -90,6 +92,9 @@ export default function Home() {
   };
 
   const getFood = async () => {
+    console.log(sampleResult);
+    return;
+
     const apiUrl = localServer
       ? "http://localhost:3001/api"
       : "https://food-now-3-server.onrender.com/api";
@@ -119,8 +124,10 @@ export default function Home() {
         <PricePicker callback={priceCallback} />
         <RatingPicker callback={ratingCallback} />
         <AttributePicker callback={attributeCallback} />
+        <button className={styles.foodButton} onClick={getFood}>
+          <h1 className={styles.buttonText}>Get food now!</h1>
+        </button>
       </div>
-      <button onClick={getFood}>Get food now!</button>
     </main>
   );
 }
