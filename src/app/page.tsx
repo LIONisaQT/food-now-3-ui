@@ -8,6 +8,7 @@ import RangePicker from "./rangePicker/RangePicker";
 import PricePicker from "./pricePicker/PricePicker";
 import RatingPicker from "./ratingPicker/RatingPicker";
 import AttributePicker from "./attributePicker/AttributePicker";
+import ResultModal from "./resultModal/ResultModal";
 
 import { sampleResult } from "./sampleResult";
 
@@ -20,15 +21,11 @@ export default function Home() {
   const [price, setPrice] = useState<number[]>([1, 4]);
   const [rating, setRating] = useState<number>(4);
   const [attributes, setAttributes] = useState<string[]>([]);
+  const [result, setResult] = useState<YelpResult>();
 
-  useEffect(() => {}, [
-    categories,
-    location,
-    distance,
-    price,
-    rating,
-    attributes,
-  ]);
+  useEffect(() => {
+    document.body.style.overflow = result ? "hidden" : "visible";
+  }, [result]);
 
   const typePickedCallback = useCallback((selections: string[]) => {
     setCategories(selections);
@@ -92,7 +89,7 @@ export default function Home() {
   };
 
   const getFood = async () => {
-    console.log(sampleResult);
+    setResult(sampleResult);
     return;
 
     const apiUrl = localServer
@@ -128,6 +125,7 @@ export default function Home() {
           <h1 className={styles.buttonText}>Get food now!</h1>
         </button>
       </div>
+      <ResultModal result={result} closeCallback={setResult} />
     </main>
   );
 }

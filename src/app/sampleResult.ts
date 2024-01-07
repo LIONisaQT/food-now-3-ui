@@ -1,4 +1,4 @@
-export const sampleResult = {
+export const sampleResult: YelpResult = {
 	"id": "xOLWTlk1jM4cJtyA8NkSfA",
 	"alias": "sonamu-korean-restaurant-san-francisco-2",
 	"name": "Sonamu Korean Restaurant",
