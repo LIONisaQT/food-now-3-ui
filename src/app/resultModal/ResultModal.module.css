@@ -6,8 +6,75 @@
 	border: 0;
 	background: var(--red);
 	color: white;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .modal::backdrop {
 	background-color: var(--red);
+}
+
+.modalTitle {
+	margin: 16px 0 0 0;
+}
+
+.modalBody {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.bodyText {
+	margin: 0;
+}
+
+.titleImage {
+	position: relative;
+}
+
+.title {
+	position: absolute;
+	left: 8px;
+	bottom: 8px;
+	margin: 0;
+	font-size: xx-large;
+	text-shadow: black 0 0 10px, black 0 0 4px;
+}
+
+.image {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.rating {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ratingText {
+	color: white;
+}
+
+.priceCategories {
+	display: flex;
+	gap: 4px;
+}
+
+.buttonGroup {
+	margin-top: 16px;
+}
+
+.button {
+	width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 6px;
+  outline: none;
+}
+
+.buttonText {
+  margin: 0;
 }

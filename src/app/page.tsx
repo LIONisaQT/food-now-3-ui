@@ -96,7 +96,7 @@ export default function Home() {
       ? "http://localhost:3001/api"
       : "https://food-now-3-server.onrender.com/api";
 
-    fetch(apiUrl, {
+    await fetch(apiUrl, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -105,7 +105,10 @@ export default function Home() {
       body: JSON.stringify(buildRequestBody()),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        return setResult(data);
+      })
       .catch((err) => {
         console.error(err);
       });

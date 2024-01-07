@@ -44,6 +44,22 @@ type YelpRequestBody = {
 	attributes: string;
 }
 
+type YelpResultCategory = {
+	alias: string;
+	title: string;
+}
+
+type YelpResultLocation = {
+	address1: string;
+	address2?: string | null;
+	address3?: string;
+	city: string;
+	zip_code: string;
+	country: string;
+	state: string;
+	display_address: string[];
+}
+
 type YelpResult = {
 	id: string;
 	alias: string;
@@ -52,7 +68,7 @@ type YelpResult = {
 	is_closed: boolean;
 	url: string;
 	review_count: number;
-	categories: [{}];
+	categories: YelpResultCategory[];
 	rating: number;
 	coordinates: {
 		latitude: number;
@@ -60,7 +76,7 @@ type YelpResult = {
 	};
 	transactions: [];
 	price: string;
-	location: {};
+	location: YelpResultLocation;
 	phone: string;
 	display_phone: string;
 	distance: number;
