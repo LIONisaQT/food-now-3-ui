@@ -89,8 +89,8 @@ export default function Home() {
   };
 
   const getFood = async () => {
-    setResult(sampleResult);
-    return;
+    // setResult(sampleResult);
+    // return;
 
     const apiUrl = localServer
       ? "http://localhost:3001/api"
@@ -105,10 +105,7 @@ export default function Home() {
       body: JSON.stringify(buildRequestBody()),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        return setResult(data);
-      })
+      .then((data) => setResult(JSON.parse(data)))
       .catch((err) => {
         console.error(err);
       });

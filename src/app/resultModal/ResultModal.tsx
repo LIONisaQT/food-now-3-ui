@@ -7,12 +7,8 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
   const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    if (!result) {
-      console.log("null result");
-      return;
-    }
+    if (!result) return;
 
-    console.log(result);
     dialog.current?.showModal();
   }, [result]);
 
