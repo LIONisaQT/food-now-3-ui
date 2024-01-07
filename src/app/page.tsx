@@ -12,7 +12,7 @@ import ResultModal from "./resultModal/ResultModal";
 
 import { sampleResult } from "./sampleResult";
 
-const localServer = true;
+const localServer = false;
 
 export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
