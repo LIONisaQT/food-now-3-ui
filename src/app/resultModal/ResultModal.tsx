@@ -91,9 +91,23 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
             ) : (
               ""
             )}
-            <p className={styles.bodyText}>{result.location.address1}</p>
-            <a href={"tel:" + result.phone}>{result.display_phone}</a>
-            <a href={result.url}>Open in Yelp</a>
+            <section className={styles.appsGroup}>
+              <button className={styles.appButton}>
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                    result.name
+                  )}`}
+                >
+                  Maps
+                </a>
+              </button>
+              <button className={styles.appButton}>
+                <a href={"tel:" + result.phone}>Call</a>
+              </button>
+              <button className={styles.appButton}>
+                <a href={result.url}>Yelp</a>
+              </button>
+            </section>
           </section>
           <section className={styles.buttonGroup}>
             <button className={styles.button}>
@@ -101,7 +115,7 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
             </button>
             <form className={styles.buttonGroup} method="dialog">
               <button className={styles.button} onClick={closeModal}>
-                <h1 className={styles.buttonText}>OK</h1>
+                <h1 className={styles.buttonText}>Back</h1>
               </button>
             </form>
           </section>

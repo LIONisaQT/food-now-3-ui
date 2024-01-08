@@ -63,8 +63,22 @@
 	gap: 4px;
 }
 
+.appsGroup {
+	display: flex;
+	justify-content: space-around;
+	margin: 16px 0;
+}
+
+.appButton {
+	border: none;
+	outline: none;
+	border-radius: 50%;
+	width: 64px;
+	height: 64px;
+}
+
 .buttonGroup {
-	margin-top: 16px;
+	margin-top: 8px;
 }
 
 .button {

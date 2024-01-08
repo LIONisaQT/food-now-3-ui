@@ -24,6 +24,7 @@ export default function Home() {
   const [result, setResult] = useState<YelpResult>();
 
   useEffect(() => {
+    scroll(0, 0);
     document.body.style.overflow = result ? "hidden" : "visible";
   }, [result]);
 
