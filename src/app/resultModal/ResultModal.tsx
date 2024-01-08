@@ -1,15 +1,45 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./ResultModal.module.css";
 import Image from "next/image";
 import { Rating } from "@mui/material";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+
+const containerStyle = {
+  width: "auto",
+  height: "200px",
+};
 
 export default function ResultModal({ result, closeCallback }: ResultProps) {
   const dialog = useRef<HTMLDialogElement>(null);
+  const [map, setMap] = useState<google.maps.Map>();
+  const [placeCoords, setPlaceCoords] = useState({ lat: 0, lng: 0 });
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: process.env.GMAP_API_KEY ?? "",
+  });
+
+  const onLoad = useCallback((map: google.maps.Map) => {
+    map.setZoom(16);
+    setMap(map);
+  }, []);
+
+  const onUnmount = useCallback((map: google.maps.Map) => {
+    setMap(map);
+  }, []);
+
+  useEffect(() => {
+    console.log(result);
+  });
 
   useEffect(() => {
     if (!result) return;
 
     dialog.current?.showModal();
+    setPlaceCoords({
+      lat: result.coordinates.latitude,
+      lng: result.coordinates.longitude,
+    });
   }, [result]);
 
   const closeModal = () => {
@@ -49,6 +79,18 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
                   .join(", ")}
               </p>
             </div>
+            {isLoaded ? (
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={placeCoords}
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+              >
+                <Marker position={placeCoords} />
+              </GoogleMap>
+            ) : (
+              ""
+            )}
             <p className={styles.bodyText}>{result.location.address1}</p>
             <a href={"tel:" + result.phone}>{result.display_phone}</a>
             <a href={result.url}>Open in Yelp</a>

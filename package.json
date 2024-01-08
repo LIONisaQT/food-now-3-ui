@@ -12,11 +12,14 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.2",
+    "@react-google-maps/api": "^2.19.2",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "use-places-autocomplete": "^4.0.1"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.54.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

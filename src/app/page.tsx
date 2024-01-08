@@ -12,7 +12,7 @@ import ResultModal from "./resultModal/ResultModal";
 
 import { sampleResult } from "./sampleResult";
 
-const localServer = false;
+const localServer = true;
 
 export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -89,8 +89,8 @@ export default function Home() {
   };
 
   const getFood = async () => {
-    // setResult(sampleResult);
-    // return;
+    setResult(sampleResult);
+    return;
 
     const apiUrl = localServer
       ? "http://localhost:3001/api"
