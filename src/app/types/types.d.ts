@@ -42,6 +42,7 @@ type YelpRequestBody = {
 	price: number[];
 	open_now: boolean;
 	attributes: string;
+	rating: number;
 }
 
 type YelpResultCategory = {

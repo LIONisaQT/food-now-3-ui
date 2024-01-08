@@ -68,6 +68,7 @@ export default function Home() {
       price: generatePriceRange(price),
       open_now: true,
       attributes: attributes.join(","),
+      rating: rating,
     };
 
     const determineLocation = () => {

@@ -42,6 +42,10 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
     });
   }, [result]);
 
+  const reroll = async () => {
+    console.log("reroll");
+  };
+
   const closeModal = () => {
     dialog.current?.close();
     closeCallback(undefined);
@@ -183,7 +187,7 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
             </section>
           </section>
           <section className={styles.buttonGroup}>
-            <button className={styles.button}>
+            <button className={styles.button} onClick={reroll}>
               <h1 className={styles.buttonText}>Re-roll</h1>
             </button>
             <form className={styles.buttonGroup} method="dialog">
