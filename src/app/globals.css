@@ -3,9 +3,23 @@
   --gray: #2d2e2f;
   --gray-regular: #c8c9ca;
   --silver-dark: #ebebeb;
+  --silver-regular: #f0f0f0;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    max-width: 800px;
+  }
 }
 
 body {
-  background: white;
+  background: var(--silver-regular);
   color: var(--gray);
+  margin: 0 auto;
+}
+
+section {
+  box-sizing: border-box;
+  background-color: white;
+  padding: 0 16px 16px;
 }

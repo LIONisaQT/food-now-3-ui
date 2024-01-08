@@ -55,7 +55,7 @@ export default function AttributePicker({ callback }: AttributeProps) {
   };
 
   return (
-    <section>
+    <section className={styles.container}>
       <h1>6. Set additional attributes.</h1>
       <div className={styles.attributeContainer}>
         <FormGroup>

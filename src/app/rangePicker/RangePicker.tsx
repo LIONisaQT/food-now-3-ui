@@ -14,7 +14,7 @@ export default function RangePicker({ callback }: DistanceProps) {
   };
 
   return (
-    <section className={styles.cotainer}>
+    <section className={styles.container}>
       <h1>3. Set max distance.</h1>
       <div className={styles.sliderContainer}>
         <Slider

@@ -115,7 +115,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1>Food Now!</h1>
+      <h1 className={styles.title}>Food Now!</h1>
       <div className={styles.categories}>
         <TypePicker callback={typePickedCallback} />
         <LocationPicker callback={locationCallback} />
