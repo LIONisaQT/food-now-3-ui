@@ -1,19 +1,17 @@
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import styles from "./LocationPicker.module.css";
+import { TextField } from "@mui/material";
 
 export default function LocationPicker({ callback }: LocationProps) {
-  const [location, setLocation] = useState("San Francisco");
+  const [location, setLocation] = useState("");
   const locationInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (locationInput && locationInput.current) {
-      locationInput.current.value = location;
-      callback(locationInput.current.value);
-    }
+    callback(location);
   }, [location, callback]);
 
-  const locationTyped = (event: FormEvent<HTMLInputElement>) => {
-    setLocation(event.currentTarget.value);
+  const locationTyped = (event: ChangeEvent<HTMLInputElement>) => {
+    setLocation(event.target.value);
   };
 
   const getLocation = () => {
@@ -21,7 +19,7 @@ export default function LocationPicker({ callback }: LocationProps) {
       navigator.geolocation.getCurrentPosition(
         ({ coords: { latitude, longitude } }) => {
           setLocation(`${latitude}, ${longitude}`);
-          console.table(`${latitude}, ${longitude}`);
+          console.table(`lat long: ${latitude}, ${longitude}`);
         },
         (error) => {
           console.error(error);
@@ -39,12 +37,15 @@ export default function LocationPicker({ callback }: LocationProps) {
     <section className={styles.container}>
       <h1>2. Where are you?</h1>
       <div className={styles.locationInput}>
-        <input
+        <TextField
           ref={locationInput}
-          className={styles.locationText}
-          placeholder="Enter location"
-          onInput={locationTyped}
-        ></input>
+          className={styles.input}
+          variant="outlined"
+          label="Location"
+          placeholder="San Francisco"
+          onChange={locationTyped}
+          value={location}
+        />
         <button className={styles.locationButton} onClick={() => getLocation()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

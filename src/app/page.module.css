@@ -5,6 +5,7 @@
   padding: 8px;
   min-height: 100vh;
   overscroll-behavior: none;
+  background-color: white;
 }
 
 .categories {
@@ -19,6 +20,8 @@
   border: 0;
   border-radius: 6px;
   outline: none;
+  background-color: var(--red);
+  color: white;
 }
 
 .foodButton:hover {

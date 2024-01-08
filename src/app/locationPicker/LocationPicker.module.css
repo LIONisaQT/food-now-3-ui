@@ -16,8 +16,12 @@
 	outline: none;
 }
 
+.input {
+	width: 100%;
+}
+
 .locationButton {
-	color: white;
+	color: var(--red);
 	width: 48px;
 	outline: none;
 	background: transparent;

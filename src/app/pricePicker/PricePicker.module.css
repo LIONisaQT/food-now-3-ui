@@ -9,7 +9,3 @@
 .slider {
 	color: var(--red);
 }
-
-.MuiSlider-markLabel {
-	color: white !important;
-}

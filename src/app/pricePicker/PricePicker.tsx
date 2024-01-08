@@ -43,11 +43,6 @@ export default function PricePicker({ callback }: PriceProps) {
           max={4}
           value={priceRange}
           onChange={sliderMove}
-          sx={{
-            "& .MuiSlider-markLabel": {
-              color: "white",
-            },
-          }}
         />
       </div>
     </section>

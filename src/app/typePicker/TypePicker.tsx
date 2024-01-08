@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./TypePicker.module.css";
 import Image from "next/image";
+import { TextField } from "@mui/material";
 
 const cusinines: FoodTypeData[] = [
   {
@@ -104,10 +105,12 @@ export default function TypePicker({ callback }: CategoryProps) {
       </div>
       <div>
         <h3 className={styles.inputTitle}>Don&apos;t see one you like?</h3>
-        <input
+        <TextField
           className={styles.input}
-          placeholder="Add your own! (comma separated)"
-        ></input>
+          variant="outlined"
+          label="Add your own! (comma separated)"
+          placeholder="Filipino, Mediterranean, ..."
+        />
       </div>
     </section>
   );

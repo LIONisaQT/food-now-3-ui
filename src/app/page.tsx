@@ -33,6 +33,7 @@ export default function Home() {
   }, []);
 
   const locationCallback = useCallback((location: string) => {
+    console.log(location);
     setLocation(location);
   }, []);
 
