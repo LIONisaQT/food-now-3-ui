@@ -19,7 +19,6 @@ export default function LocationPicker({ callback }: LocationProps) {
       navigator.geolocation.getCurrentPosition(
         ({ coords: { latitude, longitude } }) => {
           setLocation(`${latitude}, ${longitude}`);
-          console.table(`lat long: ${latitude}, ${longitude}`);
         },
         (error) => {
           console.error(error);
