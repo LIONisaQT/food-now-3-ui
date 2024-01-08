@@ -105,12 +105,14 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
               ""
             )}
             <section className={styles.appsGroup}>
-              <button className={styles.appButton}>
-                <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-                    result.name
-                  )}`}
-                >
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                  result.name
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className={styles.appButton}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={32}
@@ -127,10 +129,10 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
                       d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"
                     />
                   </svg>
-                </a>
-              </button>
-              <button className={styles.appButton}>
-                <a href={"tel:" + result.phone}>
+                </button>
+              </a>
+              <a href={"tel:" + result.phone}>
+                <button className={styles.appButton}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={32}
@@ -148,10 +150,10 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
                       fill="#FF1A1A"
                     />
                   </svg>
-                </a>
-              </button>
-              <button className={styles.appButton}>
-                <a href={result.url}>
+                </button>
+              </a>
+              <a href={result.url} target="_blank" rel="noopener noreferrer">
+                <button className={styles.appButton}>
                   <svg
                     width={32}
                     height={32}
@@ -180,8 +182,8 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
                       fill="#FF1A1A"
                     />
                   </svg>
-                </a>
-              </button>
+                </button>
+              </a>
             </section>
           </section>
           <section className={styles.buttonGroup}>
