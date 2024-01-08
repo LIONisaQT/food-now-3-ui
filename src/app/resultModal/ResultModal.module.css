@@ -44,7 +44,7 @@
 
 .image {
 	width: 100%;
-	height: auto;
+	height: 300px;
 	object-fit: cover;
 }
 
@@ -56,6 +56,12 @@
 
 .ratingText {
 	color: white;
+	font-weight: bold;
+}
+
+.reviewCount {
+	color: lightgray;
+	font-weight: normal;
 }
 
 .priceCategories {

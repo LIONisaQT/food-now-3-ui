@@ -72,8 +72,11 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
                 precision={0.5}
               />
               <p className={`${styles.ratingText} ${styles.bodyText}`}>
-                {result.review_count} review
-                {result.review_count === 1 ? "" : "s"}
+                {result.rating}{" "}
+                <span className={styles.reviewCount}>
+                  ({result.review_count} review
+                  {result.review_count === 1 ? "" : "s"})
+                </span>
               </p>
             </div>
             <div className={styles.priceCategories}>

@@ -90,8 +90,8 @@ export default function Home() {
   };
 
   const getFood = async () => {
-    setResult(sampleResult);
-    return;
+    // setResult(sampleResult);
+    // return;
 
     const apiUrl = localServer
       ? "http://localhost:3001/api"
