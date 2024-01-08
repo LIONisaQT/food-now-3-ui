@@ -71,6 +71,7 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
             <div className={styles.rating}>
               <Rating
                 readOnly
+                className={styles.ratingStars}
                 value={result.rating}
                 size="large"
                 precision={0.5}
@@ -117,7 +118,7 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
-                    stroke="currentColor"
+                    stroke="var(--red)"
                     className="w-6 h-6"
                   >
                     <path
@@ -137,7 +138,7 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
-                    stroke="currentColor"
+                    stroke="var(--red)"
                     className="w-6 h-6"
                   >
                     <path
@@ -187,9 +188,9 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
             </section>
           </section>
           <section className={styles.buttonGroup}>
-            <button className={styles.button} onClick={reroll}>
+            {/* <button className={styles.button} onClick={reroll}>
               <h1 className={styles.buttonText}>Re-roll</h1>
-            </button>
+            </button> */}
             <form className={styles.buttonGroup} method="dialog">
               <button className={styles.button} onClick={closeModal}>
                 <h1 className={styles.buttonText}>Back</h1>
