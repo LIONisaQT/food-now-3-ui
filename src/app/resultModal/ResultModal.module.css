@@ -80,8 +80,7 @@
 	width: 64px;
 	height: 64px;
 	text-decoration: none;
-	color: red;
-	background-color: var(--gray-regular);
+	background-color: var(--silver-dark);
 }
 
 .buttonGroup {
@@ -94,7 +93,7 @@
   border: 0;
   border-radius: 6px;
   outline: none;
-	background-color: var(--gray-regular);
+	background-color: var(--silver-dark);
 }
 
 .buttonText {
