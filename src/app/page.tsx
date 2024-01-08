@@ -94,6 +94,11 @@ export default function Home() {
     // setResult(sampleResult);
     // return;
 
+    if (location === "") {
+      alert("Location is required.");
+      return;
+    }
+
     const apiUrl = localServer
       ? "http://localhost:3001/api"
       : "https://food-now-3-server.onrender.com/api";

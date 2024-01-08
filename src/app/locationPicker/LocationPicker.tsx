@@ -37,6 +37,7 @@ export default function LocationPicker({ callback }: LocationProps) {
       <h1>2. Where are you?</h1>
       <div className={styles.locationInput}>
         <TextField
+          required
           ref={locationInput}
           className={styles.input}
           variant="outlined"
