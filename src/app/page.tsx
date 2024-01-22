@@ -12,8 +12,6 @@ import ResultModal from "./resultModal/ResultModal";
 
 import { sampleResult } from "./sampleResult";
 
-const localServer = true;
-
 export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
   const [location, setLocation] = useState<string>("san francisco");
@@ -99,7 +97,7 @@ export default function Home() {
       return;
     }
 
-    const apiUrl = localServer
+    const apiUrl = process.env.USE_LOCAL_SERVER
       ? "http://localhost:3001/api"
       : "https://food-now-3-server.onrender.com/api";
 
