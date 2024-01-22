@@ -29,10 +29,6 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
   }, []);
 
   useEffect(() => {
-    console.log(result);
-  });
-
-  useEffect(() => {
     if (!result) return;
 
     setPlaceCoords({

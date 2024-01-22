@@ -22,7 +22,7 @@ export default function Home() {
   const [result, setResult] = useState<YelpResult>();
 
   useEffect(() => {
-    console.log("result", result);
+    window.scrollTo(0, 0);
   }, [result]);
 
   const typePickedCallback = useCallback((selections: string[]) => {
@@ -116,9 +116,9 @@ export default function Home() {
   };
 
   return (
-    <main className={styles.main}>
+    <main>
       {!result ? (
-        <div>
+        <div className={styles.main}>
           <h1 className={styles.title}>Food Now!</h1>
           <div className={styles.categories}>
             <TypePicker callback={typePickedCallback} />
