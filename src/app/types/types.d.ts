@@ -34,7 +34,7 @@ type FoodTypeData = {
 };
 
 type YelpRequestBody = {
-	term: string;
+	categories: string[];
 	location?: string;
 	latitude?: number;
 	longitude?: number;

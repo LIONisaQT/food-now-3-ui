@@ -12,7 +12,7 @@ import ResultModal from "./resultModal/ResultModal";
 
 import { sampleResult } from "./sampleResult";
 
-const localServer = false;
+const localServer = true;
 
 export default function Home() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -63,7 +63,7 @@ export default function Home() {
     };
 
     let requestBody: YelpRequestBody = {
-      term: categories.join(","),
+      categories: categories,
       radius: Math.floor(distance * 1609.34), // Miles to meters
       price: generatePriceRange(price),
       open_now: true,
