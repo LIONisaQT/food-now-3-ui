@@ -22,8 +22,7 @@ export default function Home() {
   const [result, setResult] = useState<YelpResult>();
 
   useEffect(() => {
-    scroll(0, 0);
-    document.body.style.overflow = result ? "hidden" : "visible";
+    console.log("result", result);
   }, [result]);
 
   const typePickedCallback = useCallback((selections: string[]) => {
@@ -89,8 +88,8 @@ export default function Home() {
   };
 
   const getFood = async () => {
-    // setResult(sampleResult);
-    // return;
+    setResult(sampleResult);
+    return;
 
     if (location === "") {
       alert("Location is required.");
@@ -118,19 +117,24 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Food Now!</h1>
-      <div className={styles.categories}>
-        <TypePicker callback={typePickedCallback} />
-        <LocationPicker callback={locationCallback} />
-        <RangePicker callback={distanceCallback} />
-        <PricePicker callback={priceCallback} />
-        <RatingPicker callback={ratingCallback} />
-        <AttributePicker callback={attributeCallback} />
-        <button className={styles.foodButton} onClick={getFood}>
-          <h1 className={styles.buttonText}>Get food now!</h1>
-        </button>
-      </div>
-      <ResultModal result={result} closeCallback={setResult} />
+      {!result ? (
+        <div>
+          <h1 className={styles.title}>Food Now!</h1>
+          <div className={styles.categories}>
+            <TypePicker callback={typePickedCallback} />
+            <LocationPicker callback={locationCallback} />
+            <RangePicker callback={distanceCallback} />
+            <PricePicker callback={priceCallback} />
+            <RatingPicker callback={ratingCallback} />
+            <AttributePicker callback={attributeCallback} />
+            <button className={styles.foodButton} onClick={getFood}>
+              <h1 className={styles.buttonText}>Get food now!</h1>
+            </button>
+          </div>
+        </div>
+      ) : (
+        <ResultModal result={result} closeCallback={setResult} />
+      )}
     </main>
   );
 }

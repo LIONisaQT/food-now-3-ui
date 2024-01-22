@@ -10,7 +10,7 @@ const containerStyle = {
 };
 
 export default function ResultModal({ result, closeCallback }: ResultProps) {
-  const dialog = useRef<HTMLDialogElement>(null);
+  const dialog = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
   const [placeCoords, setPlaceCoords] = useState({ lat: 0, lng: 0 });
 
@@ -35,7 +35,6 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
   useEffect(() => {
     if (!result) return;
 
-    dialog.current?.showModal();
     setPlaceCoords({
       lat: result.coordinates.latitude,
       lng: result.coordinates.longitude,
@@ -47,14 +46,13 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
   };
 
   const closeModal = () => {
-    dialog.current?.close();
     closeCallback(undefined);
   };
 
   return (
     <div>
       {result ? (
-        <dialog className={styles.modal} ref={dialog}>
+        <div className={styles.modal} ref={dialog}>
           <h1 className={styles.modalTitle}>Your random selection:</h1>
           <div className={styles.titleImage}>
             <p className={styles.title}>{result.name}</p>
@@ -196,7 +194,7 @@ export default function ResultModal({ result, closeCallback }: ResultProps) {
               </button>
             </form>
           </section>
-        </dialog>
+        </div>
       ) : (
         ""
       )}
