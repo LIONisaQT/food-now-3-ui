@@ -88,8 +88,10 @@ export default function Home() {
   };
 
   const getFood = async () => {
-    setResult(sampleResult);
-    return;
+    if (process.env.USE_SAMPLE_RESULT) {
+      setResult(sampleResult);
+      return;
+    }
 
     if (location === "") {
       alert("Location is required.");
